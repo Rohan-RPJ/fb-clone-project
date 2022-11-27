@@ -1,0 +1,11 @@
+import nightwind from "nightwind/helper";
+
+export default function Layout() {
+  return (
+    <>
+      <Head>
+        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
+      </Head>
+    </>
+  );
+}
