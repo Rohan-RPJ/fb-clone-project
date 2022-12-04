@@ -9,6 +9,8 @@ export const authOptions = {
       clientSecret: process.env.FACEBOOK_SECRET,
     }),
   ],
+
+  secret: process.env.NEXT_PUBLIC_SECRET,
 };
 
 export default NextAuth(authOptions);
