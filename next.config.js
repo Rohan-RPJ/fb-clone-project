@@ -20,6 +20,10 @@ module.exports = {
         hostname: "facebook.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "fb-clone-project.vercel.app",
+      },
     ],
   },
   async redirects() {
