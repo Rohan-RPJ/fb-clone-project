@@ -109,7 +109,7 @@ export async function getServerSideProps(context) {
 
   let allPosts = [];
 
-  await fetch("http://localhost:3000/api/getAllPosts", requestOptions)
+  await fetch(process.env.BASE_URL + "api/getAllPosts", requestOptions)
     .then((response) => response.text())
     .then((result) => (allPosts = JSON.parse(result)))
     .catch((error) => console.log("err while fetching posts: ", error));
