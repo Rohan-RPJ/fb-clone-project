@@ -5,7 +5,7 @@ import userImg4 from "../../public/images/johnwick.jpg";
 import userImg5 from "../../public/images/ghostrider.jpg";
 import postImg1 from "../../public/images/elonmusk-post.jpg";
 import postImg2 from "../../public/images/jeff-post.jpg";
-import postImg3 from "../../public/images/billgates-post.jpg";
+import postImg3 from "../../public/images/billgatesPost.jpg";
 import postImg4 from "../../public/images/johnwick-post.jpg";
 import postImg5 from "../../public/images/ghostrider-post.jpg";
 
