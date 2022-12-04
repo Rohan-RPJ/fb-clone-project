@@ -6,7 +6,7 @@ import Main from "./../components/Main";
 import { useSession, getSession } from "next-auth/react";
 import nightwind from "nightwind/helper";
 
-const home = ({ posts }) => {
+const Home = ({ posts }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -77,7 +77,7 @@ const home = ({ posts }) => {
   );
 };
 
-export default home;
+export default Home;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);

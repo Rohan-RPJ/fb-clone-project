@@ -1,6 +1,6 @@
 import { getSession, signOut } from "next-auth/react";
 
-const logout = () => {
+const Logout = () => {
   return (
     <div>
       <button onClick={() => signOut()}>Logout</button>
@@ -8,7 +8,7 @@ const logout = () => {
   );
 };
 
-export default logout;
+export default Logout;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
