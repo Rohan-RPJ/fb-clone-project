@@ -8,6 +8,7 @@ module.exports = nextConfig;
 
 module.exports = {
   images: {
+    domains: ["fb-clone-project.vercel.app"],
     remotePatterns: [
       {
         protocol: "https",
@@ -23,6 +24,8 @@ module.exports = {
       {
         protocol: "https",
         hostname: "fb-clone-project.vercel.app",
+        port: "",
+        pathname: "/_next/image",
       },
     ],
   },
