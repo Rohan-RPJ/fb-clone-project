@@ -4,11 +4,14 @@ const nextConfig = {
   swcMinify: true,
 };
 
-module.exports = nextConfig;
+// module.exports = nextConfig;
 
 module.exports = {
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: ["fb-clone-project.vercel.app"],
+    formats: ["image/avif", "image/webp"],
+    domains: ["localhost", "fb-clone-project.vercel.app"],
     remotePatterns: [
       {
         protocol: "https",
