@@ -3,7 +3,7 @@ import userImg2 from "../../public/images/jeff.jpg";
 import userImg3 from "../../public/images/billgates.jpg";
 import userImg4 from "../../public/images/johnwick.jpg";
 import userImg5 from "../../public/images/ghostrider.jpg";
-import postImg1 from "../../public/images/elonmusk-post.jpg";
+import postImg1 from "../../public/images/abc.png";
 import postImg2 from "../../public/images/jeff-post.jpg";
 import postImg3 from "../../public/images/billgates-post.jpg";
 import postImg4 from "../../public/images/johnwick-post.jpg";
