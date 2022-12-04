@@ -1,5 +1,5 @@
 {
-  "name": "fb-clone",
+  "name": "fb-clone-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,17 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
+    "mkcert": "^1.5.1",
     "next": "13.0.4",
     "next-auth": "^4.17.0",
+    "next-videos": "^1.5.0",
     "nightwind": "^1.1.12",
+    "openssl": "^2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-facebook": "^9.0.12",
+    "react-player": "^2.11.0",
     "tailwind-scrollbar-hide": "^1.1.7",
     "typescript": "4.9.3"
   },

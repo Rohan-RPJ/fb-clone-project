@@ -12,26 +12,28 @@ import Contact from "./Contact";
 
 const Widgets = () => {
   return (
-    <section className="flex-col p-2 pt-4 justify-end">
-      <div className="flex items-center justify-end space-x-2">
-        <p className="mr-10 text-lg text-gray-500 font-semibold">Contacts</p>
-        <VideoCameraIcon
-          width={20}
-          height={20}
-          className="cursor-pointer text-gray-500"
-        />
-        <MagnifyingGlassIcon
-          width={20}
-          height={20}
-          className="cursor-pointer text-gray-500"
-        />
-        <EllipsisHorizontalIcon
-          width={20}
-          height={20}
-          className="cursor-pointer text-gray-500"
-        />
+    <section className="flex-col p-2 pr-4 pt-6 justify-end w-full h-full">
+      <div className="flex items-center justify-between space-x-2">
+        <p className="text-lg text-gray-500 font-semibold">Contacts</p>
+        <div className={`flex items-center justify-end gap-6`}>
+          <VideoCameraIcon
+            width={20}
+            height={20}
+            className="cursor-pointer text-gray-500"
+          />
+          <MagnifyingGlassIcon
+            width={20}
+            height={20}
+            className="cursor-pointer text-gray-500"
+          />
+          <EllipsisHorizontalIcon
+            width={20}
+            height={20}
+            className="cursor-pointer text-gray-500"
+          />
+        </div>
       </div>
-      <div className="flex-col space-y-6 mt-6">
+      <div className="flex-col space-y-1 mt-6">
         {[
           {
             userImg: userImg1,
