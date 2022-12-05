@@ -44,7 +44,7 @@ const Post = ({ postData }) => (
             <CustomImage
               src={postData.img}
               alt="Post Image"
-              unoptimzed="true"
+              unoptimized={true}
               //  width={200} height={200}
             />
           )}
