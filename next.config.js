@@ -29,6 +29,11 @@ module.exports = {
         hostname: "drive.google.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "fb-clone-project.vercel.app",
+        port: "",
+      },
     ],
   },
   async redirects() {
