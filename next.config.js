@@ -10,8 +10,7 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    formats: ["image/avif", "image/webp"],
-    domains: ["localhost", "fb-clone-project.vercel.app"],
+    domains: ["localhost", "fb-clone-project.vercel.app", "drive.google.com"],
     remotePatterns: [
       {
         protocol: "https",
@@ -26,9 +25,8 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "fb-clone-project.vercel.app",
+        hostname: "drive.google.com",
         port: "",
-        pathname: "/_next/image",
       },
     ],
   },
