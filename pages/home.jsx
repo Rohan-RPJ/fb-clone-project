@@ -61,7 +61,7 @@ const Home = ({ posts }) => {
         {/* Since sidebar is fixed, so below div taking required width */}
         <div className="hidden sm:block sm:col-span-1 md:col-span-2"></div>
 
-        <div className="w-full col-span-8 sm:col-span-7 md:col-span-6 lg:col-span-4 px-1 sm:px-10 mb-2">
+        <div className="w-full col-span-8 sm:col-span-7 md:col-span-6 lg:col-span-4 sm:px-10 mb-2">
           {/* Main */}
           <Main session={session} posts={posts} />
         </div>

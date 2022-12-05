@@ -52,11 +52,13 @@ const Header = ({ darkMode, darkModeHandler, session, className }) => {
             darkModeHandler={darkModeHandler}
           />
           <Searchbar className="" />
-          <Bars3Icon
-            width={25}
-            height={25}
-            className="lg:hidden text-gray-500 bg-gray-100 rounded-full p-0.5 cursor-pointer"
-          />
+          <HeadersRightIconsLayout>
+            <HeaderRightAdditionalDetails
+              iconWidth={25}
+              iconHeight={25}
+              className="lg:hidden text-gray-500 bg-gray-100 rounded-full p-0.5 cursor-pointer"
+            />
+          </HeadersRightIconsLayout>
         </div>
       </div>
 

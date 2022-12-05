@@ -85,7 +85,7 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
 
   return (
     <div
-      className={`w-full bg-white dark:bg-black p-2 sm:p-4 rounded-md shadow-md ${className}`}
+      className={`w-full bg-white dark:bg-black p-2 sm:p-4 sm:rounded-md shadow-md ${className}`}
     >
       <div className="flex items-center space-x-2.5">
         <div className="h-[38px] w-[44px] overflow-hidden relative rounded-full cursor-pointer">

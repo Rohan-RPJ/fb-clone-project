@@ -17,14 +17,14 @@ const Main = ({ session, posts }) => {
   };
 
   return (
-    <section className="flex-col py-4 px-2 sm:px-8 mt-2 sm:mt-3">
+    <section className="flex-col py-4 sm:px-8 mt-1 sm:mt-3">
       <PostMyActivity
-        className="sm:hidden mt-4 mb-2"
+        className="sm:hidden mt-3.5 mb-1"
         session={session}
         addPostHandler={addPostHandler}
       />
-      <div className={`bg-white rounded-md pb-4 px-4`}>
-        <div className="flex items-center w-full justify-between pt-1 gap-1">
+      <div className={`bg-white sm:rounded-md pb-1 sm:pb-4 px-2 sm:px-4`}>
+        <div className="hidden sm:flex items-center w-full justify-between pt-1 gap-1">
           {[
             {
               Icon: BookOpenIcon,
