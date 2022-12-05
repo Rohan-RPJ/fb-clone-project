@@ -11,6 +11,7 @@ module.exports = {
   swcMinify: true,
   images: {
     domains: ["localhost", "fb-clone-project.vercel.app", "drive.google.com"],
+    path: "/_next/image",
     remotePatterns: [
       {
         protocol: "https",
