@@ -7,7 +7,7 @@ const nextConfig = {
 // module.exports = nextConfig;
 
 module.exports = {
-  // reactStrictMode: true,
+  reactStrictMode: true,
   swcMinify: true,
   images: {
     domains: ["localhost", "fb-clone-project.vercel.app", "drive.google.com"],
