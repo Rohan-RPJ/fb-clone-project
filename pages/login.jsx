@@ -1,7 +1,10 @@
 import { getSession, signIn } from "next-auth/react";
+import { useEffect } from "react";
 
 const Login = () => {
-  signIn();
+  useEffect(() => {
+    signIn();
+  }, []);
 
   return <div>Loading...</div>;
 };
