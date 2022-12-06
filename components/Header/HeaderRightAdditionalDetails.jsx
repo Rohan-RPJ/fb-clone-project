@@ -16,11 +16,11 @@ const HeaderRightAdditionalDetails = ({ className, iconWidth, iconHeight }) => {
     setShowDropdown((prevState) => !prevState);
   };
 
-  // useEffect(() => {
-  //   document.onclick = (e) => {
-  //     e.target.getAttribute("name") !== "dropdown" && setShowDropdown(false);
-  //   };
-  // }, []);
+  useEffect(() => {
+    document.onclick = (e) => {
+      e.target.getAttribute("name") !== "dropdown" && setShowDropdown(false);
+    };
+  }, []);
 
   return (
     <div className="">
