@@ -17,11 +17,9 @@ const HeaderRightAdditionalDetails = ({ className, iconWidth, iconHeight }) => {
   };
 
   useEffect(() => {
-    document.onclick = (e) => {
+    document.ontouchstart = (e) => {
       e.target.getAttribute("name") !== "dropdown" && setShowDropdown(false);
     };
-
-    document.ontouchstart = document.onclick;
   }, []);
 
   return (
