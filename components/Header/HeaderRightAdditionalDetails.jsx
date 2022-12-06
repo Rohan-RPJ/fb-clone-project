@@ -5,7 +5,7 @@ import {
   ShareIcon,
   UsersIcon,
 } from "@heroicons/react/24/solid";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { signOut } from "next-auth/react";
 
@@ -16,14 +16,23 @@ const HeaderRightAdditionalDetails = ({ className, iconWidth, iconHeight }) => {
     setShowDropdown((prevState) => !prevState);
   };
 
+  useEffect(() => {
+    document.onclick = (e) => {
+      e.target.getAttribute("name") !== "dropdown" && setShowDropdown(false);
+    };
+  }, []);
+
   return (
     <div className="">
       <ChevronDownIcon
         width={iconWidth}
         height={iconHeight}
         className={`${className}`}
-        onClick={() => onHoverHandler()}
-        onMouseEnter={() => onHoverHandler()}
+        onClick={() => {
+          onHoverHandler();
+        }}
+        // onMouseEnter={() => onHoverHandler()}
+        name="dropdown"
       />
 
       <Transition

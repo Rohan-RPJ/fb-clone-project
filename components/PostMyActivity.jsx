@@ -181,9 +181,9 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
       </div>
 
       <div
-        className={`${
-          fileSrc ? "block" : "hidden"
-        } w-full h-full mt-2 overflow-hidden relative`}
+        className={`${fileSrc ? "block" : "hidden"} w-full ${
+          postImage ? "h-[400px] sm:h-[500px]" : postVideo && "h-full"
+        } mt-2 overflow-hidden relative`}
       >
         {fileSrc && postImage && (
           <CustomImage src={fileSrc} alt="New Post Image" />

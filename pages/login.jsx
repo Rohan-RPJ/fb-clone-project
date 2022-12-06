@@ -1,11 +1,9 @@
 import { getSession, signIn } from "next-auth/react";
 
 const Login = () => {
-  return (
-    <div>
-      <button onClick={() => signIn()}>Login</button>
-    </div>
-  );
+  signIn();
+
+  return <div>Loading...</div>;
 };
 
 export default Login;
