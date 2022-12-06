@@ -20,6 +20,8 @@ const HeaderRightAdditionalDetails = ({ className, iconWidth, iconHeight }) => {
     document.onclick = (e) => {
       e.target.getAttribute("name") !== "dropdown" && setShowDropdown(false);
     };
+
+    document.ontouchstart = document.onclick;
   }, []);
 
   return (
