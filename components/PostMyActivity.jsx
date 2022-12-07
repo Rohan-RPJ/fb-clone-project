@@ -115,7 +115,7 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
           <input
             className={`${
               showPostMsgInputErr
-                ? "focus:outline outline-1 outline-red-400"
+                ? "outline outline-1 outline-red-400"
                 : "focus:outline outline-1 outline-blue-500"
             } w-full bg-gray-100 text-slate-500 rounded-full p-2 sm:p-2.5 sm:pl-4 px-4 text-xs sm:text-sm font-medium`}
             type="text"
