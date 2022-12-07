@@ -9,6 +9,7 @@ import {
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 import ReactPlayer from "react-player";
+import Loading from './Loading';
 
 const PostMyActivity = ({ className, session, addPostHandler }) => {
   const fileInputRef = useRef(null);
@@ -18,35 +19,43 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
   const [postVideo, setPostVideo] = useState(null);
   const [postMessage, setPostMessage] = useState(null);
   const [showPostMsgInputErr, setShowPostMsgInputErr] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const addPost = (e) => {
     e.preventDefault();
 
-    if (!postMessage) {
-      setShowPostMsgInputErr(true);
-      return;
-    }
+      if (!postMessage) {
+        setShowPostMsgInputErr(true);
+        return;
+      }
+  
+      setShowPostMsgInputErr(false);
+  
+      let newPost = {
+        profilePhoto: session.user.image,
+        userName: session.user.name,
+        dateTime:
+          new Date().toLocaleDateString() +
+          ", " +
+          new Date().toLocaleTimeString(),
+        message: postMessage,
+      };
+      if (postImage) newPost.img = URL.createObjectURL(postImage);
+      else if (postVideo) newPost.video = URL.createObjectURL(postVideo);
+  
+      setPostMessage(null);
+      setPostImage(null);
+      setPostVideo(null);
+      setFileSrc(null);
+      postActivityFormRef.current?.reset();
 
-    setShowPostMsgInputErr(false);
+      setLoading(true);
+      setTimeout(() => {
+        addPostHandler(newPost);
 
-    let newPost = {
-      profilePhoto: session.user.image,
-      userName: session.user.name,
-      dateTime:
-        new Date().toLocaleDateString() +
-        ", " +
-        new Date().toLocaleTimeString(),
-      message: postMessage,
-    };
-    if (postImage) newPost.img = URL.createObjectURL(postImage);
-    else if (postVideo) newPost.video = URL.createObjectURL(postVideo);
-
-    setPostMessage(null);
-    setPostImage(null);
-    setPostVideo(null);
-    addPostHandler(newPost);
-    setFileSrc(null);
-    console.log(postActivityFormRef.current?.reset());
+        setTimeout(() => setLoading(false), 1000)
+        
+      }, 1000)
   };
 
   const selectFile = () => {
@@ -84,6 +93,8 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
   };
 
   return (
+    <>
+    <Loading load={loading} />
     <div
       className={`w-full bg-white dark:bg-black p-2 sm:p-4 sm:rounded-md shadow-md ${className}`}
     >
@@ -104,11 +115,13 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
           <input
             className={`${
               showPostMsgInputErr
-                ? "outline outline-1 outline-red-400"
-                : "outline-none"
+                ? "focus:outline outline-1 outline-red-400"
+                : "focus:outline outline-1 outline-blue-500"
             } w-full bg-gray-100 text-slate-500 rounded-full p-2 sm:p-2.5 sm:pl-4 px-4 text-xs sm:text-sm font-medium`}
             type="text"
-            placeholder="What's on your mind, Rohan?"
+            placeholder={`What's on your mind, ${
+              session.user.name?.split(" ")[0]
+            } ?`}
             onChange={(e) => {
               if (e.target.value) {
                 setShowPostMsgInputErr(false);
@@ -198,6 +211,7 @@ const PostMyActivity = ({ className, session, addPostHandler }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
