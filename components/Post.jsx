@@ -2,13 +2,15 @@ import {
   ChatBubbleBottomCenterIcon,
   HandThumbUpIcon,
   ShareIcon,
+  HeartIcon,
+  FaceSmileIcon
 } from "@heroicons/react/24/outline";
 import CustomImage from "./CustomImage";
 import ReactPlayer from "react-player";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/solid";
 import dynamic from "next/dynamic";
 import InputEmoji from "react-input-emoji";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const DynamicReactPlayerForVideo = dynamic(() => import("react-player"), {
   ssr: false,
@@ -33,9 +35,7 @@ const Post = ({ postData, session }) => {
   };
 
   return (
-    <div
-      className={`bg-white shadow-xl sm:rounded-md w-full h-auto`}
-    >
+    <div className={`bg-white shadow-xl sm:rounded-md w-full h-auto`}>
       <div className="flex flex-col space-y-2 w-full h-auto">
         <div className="basis-1/12 p-4">
           <div className="flex space-x-2 items-center mb-4">
@@ -70,11 +70,14 @@ const Post = ({ postData, session }) => {
 
         <div
           className={`basis-10/12 w-full sm:px-2 ${
-            (postData.img || postData.video) ? "block" : "hidden"} h-auto"
+            postData.img || postData.video ? "block" : "hidden"
+          } h-auto"
           }`}
         >
           <div
-            className={`relative w-full ${postData.img ? "h-[600px]" : "h-auto"} overflow-hidden cursor-pointer`}
+            className={`relative w-full ${
+              postData.img ? "h-[400px] sm:h-[600px]" : "h-auto"
+            } overflow-hidden cursor-pointer`}
           >
             {postData.img && (
               <CustomImage
@@ -91,7 +94,7 @@ const Post = ({ postData, session }) => {
                 width={"100%"}
                 height={
                   postData.video.toString().includes("youtu.be")
-                    ? "600px"
+                    ? "400px"
                     : "100%"
                 }
                 // className={`min-h-[400px] sm:min-h-[500px]`}
@@ -101,12 +104,40 @@ const Post = ({ postData, session }) => {
         </div>
 
         {/* Likes/Hearts/... Emojis */}
-        {[
-          {
-            category: "smileys_people",
-            name: "Faces...",
-          },
-        ].map((category, index) => {})}
+        <div className={`flex items-center justify-between px-2`}>
+          <div className={`w-full h-5 flex items-center justify-start px-2`}>
+            {[
+              {
+                Icon: HandThumbUpIcon,
+                fromGradient: "from-blue-600",
+                toGradient: "to-blue-400",
+              },
+              {
+                Icon: HeartIcon,
+                fromGradient: "from-red-600",
+                toGradient: "to-red-400",
+              },
+              {
+                Icon: FaceSmileIcon,
+                fromGradient: "from-yellow-600",
+                toGradient: "to-yellow-400",
+              },
+            ].map(({ Icon, fromGradient, toGradient }, index) => {
+              return (
+                <div
+                  className={`p-1 bg-gradient-to-r ${fromGradient} ${toGradient} ${index !== 0 && "-ml-1"} shadow-inner rounded-full cursor-pointer`}
+                  key={index}
+                >
+                  <Icon width={15} height={15} className={`text-white dark:text-white`} />
+                </div>
+              );
+            })}
+
+            <p className={`text-gray-500 mx-2`}>3.1M</p>
+            </div>
+
+            <p className={`text-gray-500 mx-2 whitespace-nowrap`}>1.1M comments 50K shares </p>
+          </div>
 
         <div className="hidden sm:block w-2.5/3 h-[1px] mb-1 sm:mb-1 mx-4 bg-gray-200" />
 
@@ -141,8 +172,8 @@ const Post = ({ postData, session }) => {
                 key={index}
                 onClick={onClickHandler}
               >
-                <Icon width={28} height={28} className={`text-gray-800`} />
-                <span className={`hidden sm:block text-gray-800`}>{text}</span>
+                <Icon width={28} height={28} className={`text-gray-500`} />
+                <span className={`hidden sm:block text-gray-500`}>{text}</span>
               </div>
             );
           })}
@@ -156,7 +187,9 @@ const Post = ({ postData, session }) => {
 
         {/* Show Comments */}
         <div
-          className={`${!showComments && "hidden"} w-full h-auto pl-5 pr-3 pb-3`}
+          className={`${
+            !showComments && "hidden"
+          } w-full h-auto pl-5 pr-3 pb-3`}
         >
           <p className={`text-gray-500 font-semibold`}>
             View Previous Comments
