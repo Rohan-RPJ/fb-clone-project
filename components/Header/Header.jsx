@@ -7,15 +7,8 @@ import {
   UserGroupIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
-import {
-  BellIcon,
-  Squares2X2Icon,
-  ChatBubbleOvalLeftEllipsisIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
 import CustomImage from "../CustomImage";
 import logo from "./../../public/images/fb-logo.png";
-import profilePhoto from "./../../public/images/profile-pic.jpg";
 import Image from "next/image";
 import Searchbar from "../Searchbar";
 import DarkModeToggler from "../DarkModeToggler";
@@ -94,14 +87,14 @@ const Header = ({ darkMode, darkModeHandler, session, className }) => {
             <CustomImage
               // width={40}
               // height={40}
-              src={session.user.image}
+              src={session?.user.image}
               className="rounded-full"
               alt="User Image"
             />
           </div>
 
           <p className="font-semibold hidden xl:block text-gray-600">
-            {session.user.name}
+            {session?.user.name}
           </p>
           <ChevronDownIcon
             width={20}

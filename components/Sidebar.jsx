@@ -17,13 +17,13 @@ const Sidebar = ({ session }) => {
           <CustomImage
             // width={40}
             // height={40}
-            src={session.user.image}
+            src={session?.user.image}
             alt="User Image"
             className="rounded-full"
           />
         </div>
         <p className="font-semibold hidden sm:block text-gray-600 text-sm md:text-base text-ellipsis overflow-hidden">
-          {session.user.name}
+          {session?.user.name}
         </p>
       </div>
 
