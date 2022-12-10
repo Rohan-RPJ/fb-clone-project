@@ -8,6 +8,7 @@ import userImg2 from "../public/images/jeff.jpg";
 import userImg3 from "../public/images/billgates.jpg";
 import userImg4 from "../public/images/johnwick.jpg";
 import userImg5 from "../public/images/ghostrider.jpg";
+import userImg6 from "../public/images/ironman.jpg";
 import Contact from "./Contact";
 
 const Widgets = () => {
@@ -54,6 +55,10 @@ const Widgets = () => {
           {
             userImg: userImg5,
             userName: "Ghost Rider",
+          },
+          {
+            userImg: userImg6,
+            userName: "Iron Man",
           },
         ].map(({ userImg, userName }, index) => (
           <Contact img={userImg} name={userName} key={index} />

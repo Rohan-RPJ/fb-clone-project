@@ -58,6 +58,11 @@ module.exports = {
         hostname: "fb-clone-project.vercel.app",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "youtube.com",
+        port: "",
+      },
     ],
   },
   async redirects() {

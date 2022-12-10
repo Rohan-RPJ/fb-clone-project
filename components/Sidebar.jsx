@@ -22,7 +22,7 @@ const Sidebar = ({ session }) => {
             className="rounded-full"
           />
         </div>
-        <p className="font-semibold hidden sm:block text-gray-600 text-sm md:text-base text-ellipsis overflow-hidden">
+        <p className="font-semibold hidden sm:block text-gray-600 text-sm md:text-base w-24 truncate">
           {session?.user.name}
         </p>
       </div>

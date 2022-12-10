@@ -65,7 +65,7 @@ const Main = ({ session, posts }) => {
         session={session}
         addPostHandler={addPostHandler}
       />
-      <Posts className="my-2" posts={allPosts} />
+      <Posts className="my-2" posts={allPosts} session={session} />
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import Post from "./Post";
 
-const Posts = ({ className, posts }) => {
+const Posts = ({ className, posts, session }) => {
   return (
     <div
       className={`flex-col space-y-2 md:space-y-6 w-full ${
@@ -9,7 +9,7 @@ const Posts = ({ className, posts }) => {
     >
       {posts &&
         posts
-          .map((postData, index) => <Post postData={postData} key={index} />)
+          .map((postData, index) => <Post postData={postData} key={index} session={session} />)
           .reverse()}
     </div>
   );

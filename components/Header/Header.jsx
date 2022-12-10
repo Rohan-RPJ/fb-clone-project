@@ -93,7 +93,7 @@ const Header = ({ darkMode, darkModeHandler, session, className }) => {
             />
           </div>
 
-          <p className="font-semibold hidden xl:block text-gray-600">
+          <p className="font-semibold hidden xl:block text-gray-600 w-20 truncate">
             {session?.user.name}
           </p>
           <ChevronDownIcon
