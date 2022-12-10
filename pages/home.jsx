@@ -82,13 +82,13 @@ export default Home;
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   // console.log("context", context.resolvedUrl);
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/login",
-      },
-    };
-  }
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login",
+  //     },
+  //   };
+  // }
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
