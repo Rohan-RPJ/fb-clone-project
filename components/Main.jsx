@@ -9,7 +9,6 @@ import {
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 
-
 const Main = ({ session, posts }) => {
   const [allPosts, setAllPosts] = useState(posts);
 
@@ -60,7 +59,6 @@ const Main = ({ session, posts }) => {
         <div className="w-full h-0.5 mb-2 sm:mb-4 bg-gray-50" />
 
         <Feeds />
-
       </div>
 
       <PostMyActivity
