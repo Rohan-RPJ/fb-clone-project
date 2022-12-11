@@ -2,9 +2,8 @@ import {
   ChatBubbleBottomCenterIcon,
   HandThumbUpIcon,
   ShareIcon,
-  HeartIcon,
-  FaceSmileIcon
 } from "@heroicons/react/24/outline";
+import  { HandThumbUpIcon as SolidHandThumbUpIcon, HeartIcon, FaceSmileIcon, FireIcon } from "@heroicons/react/24/solid";
 import CustomImage from "./CustomImage";
 import ReactPlayer from "react-player";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/solid";
@@ -22,6 +21,8 @@ const Post = ({ postData, session }) => {
   );
   const [newPostComment, setNewPostComment] = useState("");
   const [showComments, setShowComments] = useState(false);
+  const [showEmojis, setShowEmojis] = useState(false);
+  const [postLiked, setPostLiked] = useState(false);
 
   const addNewComment = () => {
     if (newPostComment) {
@@ -104,11 +105,11 @@ const Post = ({ postData, session }) => {
         </div>
 
         {/* Likes/Hearts/... Emojis */}
-        <div className={`flex items-center justify-between px-2`}>
+        <div className={`flex items-center justify-between px-2 relative`}>
           <div className={`w-full h-5 flex items-center justify-start px-2`}>
             {[
               {
-                Icon: HandThumbUpIcon,
+                Icon: SolidHandThumbUpIcon,
                 fromGradient: "from-blue-600",
                 toGradient: "to-blue-400",
               },
@@ -118,6 +119,11 @@ const Post = ({ postData, session }) => {
                 toGradient: "to-red-400",
               },
               {
+                  Icon: FireIcon,
+                  fromGradient: "from-orange-600",
+                  toGradient: "to-yellow-400",
+              },
+              {
                 Icon: FaceSmileIcon,
                 fromGradient: "from-yellow-600",
                 toGradient: "to-yellow-400",
@@ -125,14 +131,49 @@ const Post = ({ postData, session }) => {
             ].map(({ Icon, fromGradient, toGradient }, index) => {
               return (
                 <div
-                  className={`p-1 bg-gradient-to-r ${fromGradient} ${toGradient} ${index !== 0 && "-ml-1"} shadow-inner rounded-full cursor-pointer`}
+                  className={`peer p-1 bg-gradient-to-r ${fromGradient} ${toGradient} ${index !== 0 && "-ml-1"} shadow-inner rounded-full cursor-pointer`}
                   key={index}
+                  onClick={() => { setShowEmojis(true) }}
                 >
                   <Icon width={15} height={15} className={`text-white dark:text-white`} />
                 </div>
               );
             })}
 
+            <div className={`hidden ${showEmojis && "flex peer-hover:flex hover:flex"} absolute gap-0.5 sm:gap-1.5 items-center justify-start -ml-3 sm:-ml-20`}>
+              {[
+                {
+                  Icon: SolidHandThumbUpIcon,
+                  fromGradient: "from-blue-600",
+                  toGradient: "to-blue-400",
+                },
+                {
+                  Icon: HeartIcon,
+                  fromGradient: "from-red-600",
+                  toGradient: "to-red-400",
+                },
+                {
+                  Icon: FireIcon,
+                  fromGradient: "from-orange-600",
+                  toGradient: "to-yellow-400",
+                },
+                {
+                  Icon: FaceSmileIcon,
+                  fromGradient: "from-yellow-600",
+                  toGradient: "to-yellow-400",
+                },
+              ].map(({ Icon, fromGradient, toGradient }, index) => {
+                return (
+                  <div
+                    className={`p-1 bg-gradient-to-r ${fromGradient} ${toGradient} shadow-inner rounded-full cursor-pointer lg:hover:scale-125`}
+                    key={index}
+                    onClick={() => { setShowEmojis(false) }}
+                  >
+                    <Icon width={40} height={40} className={`text-white dark:text-white lg:hover:animate-pulse decoration-none`} />
+                  </div>
+                );
+              })}
+              </div>
             <p className={`text-gray-500 mx-2`}>3.1M</p>
             </div>
 
@@ -149,9 +190,11 @@ const Post = ({ postData, session }) => {
         >
           {[
             {
-              Icon: HandThumbUpIcon,
+              Icon: postLiked ? SolidHandThumbUpIcon : HandThumbUpIcon,
               text: "Like",
-              onClickHandler: () => {},
+              onClickHandler: () => { setPostLiked((prev) => !prev) },
+              iconStyle: postLiked && "text-blue-500 dark:text-blue-500 origin-bottom group-hover:-rotate-12 hover:-rotate-12",
+              textStyle: postLiked && "text-blue-500 dark:text-blue-500 font-semibold",
             },
             {
               Icon: ChatBubbleBottomCenterIcon,
@@ -159,21 +202,23 @@ const Post = ({ postData, session }) => {
               onClickHandler: () => {
                 setShowComments((prevState) => !prevState);
               },
+              iconStyle: showComments && "text-black dark:text-white",
+              textStyle: showComments && "text-black dark:text-white font-semibold",
             },
             {
               Icon: ShareIcon,
               text: "Share",
               onClickHandler: () => {},
             },
-          ].map(({ Icon, text, onClickHandler }, index) => {
+          ].map(({ Icon, text, onClickHandler, iconStyle, textStyle }, index) => {
             return (
               <div
-                className="flex items-center justify-center gap-2 w-full py-1 bg-gray-100 sm:bg-white sm:hover:bg-gray-100 rounded-full sm:rounded-md mx-1 mb-0 cursor-pointer"
+                className="group flex items-center justify-center gap-2 w-full py-1 bg-gray-100 sm:bg-white sm:hover:bg-gray-100 rounded-full sm:rounded-md mx-1 mb-0 cursor-pointer"
                 key={index}
                 onClick={onClickHandler}
               >
-                <Icon width={28} height={28} className={`text-gray-500`} />
-                <span className={`hidden sm:block text-gray-500`}>{text}</span>
+                <Icon width={28} height={28} className={`${iconStyle} transition transform duration-300 rotate-0 text-gray-500`} />
+                <span className={`${textStyle} hidden sm:block text-gray-500`}>{text}</span>
               </div>
             );
           })}
